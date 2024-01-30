@@ -4,6 +4,8 @@
 
 This program will automate extracting given clips from recording session. 
 
+Works on python version 3.11.7 64-bit
+
 ### TODO:
 1. Make python script/library allowing extracting files from given directory, create clips based on "selection" txt file, way to save clips into another folder and other utilities.
 2. Make app usable for humans: make frontend of application, allow searching through folders etc.
