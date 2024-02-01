@@ -59,13 +59,13 @@ if __name__ == "__main__":
     temp = cutVideo(mergeClips("Test_Folder/"),35,40)
     #exportClip(temp,"Test_Folder/","h.mp4",(1000,800))
     
-    temp2 = cutVideo(mergeClips("Test_Folder/"),1,5)
+    temp2 = cutVideo(mergeClips("Test_Folder/"),10,20)
     
     l = []
     l.append(temp)
     l.append(temp2)
     
-    exportClipList(l,"Test_Folder/","export_folder3")
+    exportClipList(l,"Test_Folder/","export_folder4")
     
     
     print("Finished testing Video_Manipulations.py")

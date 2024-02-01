@@ -36,7 +36,7 @@ if __name__ == "__main__":
     a = timeStamps("Test_Folder/test.txt")
 
     
-    print(a.getTimeList())
+    print(a.time_list)
     
     
     print("\nFinished testing Selection.py")
