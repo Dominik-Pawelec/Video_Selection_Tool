@@ -25,14 +25,6 @@ class timeStamps:
 
                 self.time_raw.append([nr_1,nr_2]) #nit necessaty but maybe we'll be used
                 self.time_list.append([clearNumberStr(nr_1),clearNumberStr(nr_2)])
-
-                
-            
-    def getTime(self,nr):
-        return self.time_list[nr]
-    
-    def getTimeList(self):
-        return self.time_list
             
     
         

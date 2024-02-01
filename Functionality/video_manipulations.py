@@ -6,7 +6,8 @@ import os
 
 def mergeClips(path):
     file_list = os.listdir(path)
-    videos = [mp.VideoFileClip(path+file) for file in file_list]
+    
+    videos = [mp.VideoFileClip(path+file) for file in file_list if os.path.splitext(file)[1]==".mp4"]
     if len(videos) != 0:
         return mp.concatenate(videos)
     return None
@@ -58,13 +59,13 @@ if __name__ == "__main__":
     temp = cutVideo(mergeClips("Test_Folder/"),35,40)
     #exportClip(temp,"Test_Folder/","h.mp4",(1000,800))
     
-    temp2 = cutVideo(mergeClips("Test_Folder/"),60,69)
+    temp2 = cutVideo(mergeClips("Test_Folder/"),1,5)
     
     l = []
     l.append(temp)
     l.append(temp2)
     
-    exportClipList(l,"Test_Folder/","export_folder")
+    exportClipList(l,"Test_Folder/","export_folder3")
     
     
     print("Finished testing Video_Manipulations.py")
