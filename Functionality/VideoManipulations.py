@@ -4,22 +4,14 @@ import moviepy.editor as mp
 import os
 
 
-def mergeClips(path):
-    file_list = os.listdir(path)
-    
-    videos = [mp.VideoFileClip(path+file) for file in file_list if os.path.splitext(file)[1]==".mp4"]
+def mergeClips(clip_list):
+    videos = [mp.VideoFileClip(file) for file in clip_list if os.path.splitext(file)[1]==".mp4"]
     if len(videos) != 0:
         return mp.concatenate(videos)
     return None
 
-def exportClip(clip:mp.VideoFileClip, export_path, file_name):
-    path_file = export_path + file_name
-    if os.path.exists(path_file):
-        print(f"path {path_file} already exists, change name of the file to proceed")
-        return #TO DO: auto change name
-    
-    clip.write_videofile(path_file)
-    # if exists, return "hey it worked"
+def exportClip(clip:mp.VideoFileClip, path):
+    clip.write_videofile(path)
     
 def exportClipList(clip_list, export_path, folder_name):
     #print(os.getcwd()) //dont delete, useful reminder later that hose are indirect paths not direct
@@ -75,10 +67,13 @@ if __name__ == "__main__":
     print("Finished testing Video_Manipulations.py")
     """
 
-    video = mp.VideoFileClip("temp/selekcja.mp4")
+   # video = mp.VideoFileClip("temp/selekcja.mp4")
 
-    changeRes(video,(640,480))
+    #changeRes(video,(640,480))
 
-    exportClip(video,"temp/","selekcja_lowRes.mp4")
+    #exportClip(video,"temp/","selekcja_lowRes.mp4")
+
+    x = mergeClips(["C:/Users/domin/Desktop/aaaprojekt/Video_Selection_Tool/Test_Folder/h.mp4","C:/Users/domin/Desktop/aaaprojekt/Video_Selection_Tool/Test_Folder/test_video2.mp4"])
+    exportClip(x,"C:/Users/domin/Desktop/aaaprojekt/Video_Selection_Tool/Test_Folder/22h.mp4")
 
     
