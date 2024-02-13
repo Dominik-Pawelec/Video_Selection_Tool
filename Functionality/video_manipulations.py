@@ -12,13 +12,12 @@ def mergeClips(path):
         return mp.concatenate(videos)
     return None
 
-def exportClip(clip:mp.VideoFileClip, export_path, file_name,render_res = None):
+def exportClip(clip:mp.VideoFileClip, export_path, file_name):
     path_file = export_path + file_name
     if os.path.exists(path_file):
         print(f"path {path_file} already exists, change name of the file to proceed")
         return #TO DO: auto change name
-    if render_res != None:
-        clip = clip.resize(render_res)
+    
     clip.write_videofile(path_file)
     # if exists, return "hey it worked"
     
@@ -44,17 +43,22 @@ def cutTimeStampClips(clip:mp.VideoFileClip, timestamps : Sel.timeStamps, precis
     
     #security checks: what if list gives thing out of order and others
     return list_of_vid
+
+def changeRes(clip:mp.VideoFileClip,res):
+    clip = clip.resize(res)
+    return clip
         
         
 
 
 
 
+#All rewrite as class, not functions seperate from object??
 
 
 #=====TESTING=====
 if __name__ == "__main__":
-    
+    """
     timestamps = Sel.timeStamps("Test_Folder/test.txt")
     temp = cutVideo(mergeClips("Test_Folder/"),35,40)
     #exportClip(temp,"Test_Folder/","h.mp4",(1000,800))
@@ -69,3 +73,12 @@ if __name__ == "__main__":
     
     
     print("Finished testing Video_Manipulations.py")
+    """
+
+    video = mp.VideoFileClip("temp/selekcja.mp4")
+
+    changeRes(video,(640,480))
+
+    exportClip(video,"temp/","selekcja_lowRes.mp4")
+
+    
