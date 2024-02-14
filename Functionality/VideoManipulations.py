@@ -10,8 +10,8 @@ def mergeClips(clip_list):
         return mp.concatenate(videos)
     return None
 
-def exportClip(clip:mp.VideoFileClip, path):
-    clip.write_videofile(path)
+def exportClip(clip:mp.VideoFileClip, path, log):
+    clip.write_videofile(path,logger = log)
     
 def exportClipList(clip_list, export_path, folder_name):
     #print(os.getcwd()) //dont delete, useful reminder later that hose are indirect paths not direct
@@ -39,6 +39,9 @@ def cutTimeStampClips(clip:mp.VideoFileClip, timestamps : Sel.timeStamps, precis
 def changeRes(clip:mp.VideoFileClip,res):
     clip = clip.resize(res)
     return clip
+
+
+
         
         
 

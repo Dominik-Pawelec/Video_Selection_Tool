@@ -2,11 +2,13 @@ import tkinter as ttk
 from tkinter import filedialog
 
 import VideoManipulations as vm
-
+from Logger import Logger
 
 
 class GUI():
     def __init__(self):
+        self.log = Logger()
+
         self.root = ttk.Tk(className=" Video Selection Tool")
         self.root.geometry("800x300")
         self.root.config(bg="lightgrey")
@@ -27,6 +29,9 @@ class GUI():
         
         self.base_frm.pack()
         self.root.mainloop()
+
+
+#===========MERGE GUI============
 
     def mergeGUI(self):
         print("Merge Clips")
@@ -79,46 +84,53 @@ class GUI():
         print(self.export_path)
 
     def RunMerge(self):
-        #uruchom GUI z progress barem
+        
+
         if len(self.import_path_t)==0:
-            popup = ttk.Toplevel(self.root)
-            popup.geometry("250x60")
-            popup.title("Wrong import data")
-            ttk.Label(popup,text="No import file was selected").pack()
-            ttk.Button(popup,text="Ok",command=popup.destroy,width=10).pack()
+            self.Popup("No import file was selected")
             return
         
         import_path_l = list(self.import_path_t)  
         merged_clips = vm.mergeClips(import_path_l)
 
         if len(self.export_path)==0:
-            popup = ttk.Toplevel(self.root)
-            popup.geometry("250x60")
-            popup.title("Wrong iexport data")
-            ttk.Label(popup,text="No export file was selected").pack()
-            ttk.Button(popup,text="Ok",command=popup.destroy,width=10).pack()
+            self.Popup("No export file was selected")
             return
         
         res = self.resolution_display.get()
         if res == "480p":
             vm.changeRes(merged_clips,(854,480))
         
-        vm.exportClip(merged_clips,self.export_path)
-        popup = ttk.Toplevel(self.root)
-        popup.geometry("250x60")
-        popup.title("Success")
-        ttk.Label(popup,text="Merged sucesfully").pack()
-        ttk.Button(popup,text="Ok",command=popup.destroy,width=10).pack()
-        print("ok")
+        vm.exportClip(merged_clips,self.export_path,self.log)
+        
+        self.Popup("Finished merging clips")
         return
 
+    
+    def ProgressBar(self):
+        popup = ttk.Toplevel(self.root)
+        popup.geometry("250x60")
+        popup.title("Processing...")
+
+        progress_bar_display = ttk.StringVar()
+        progress_bar_display.set(str(self.log.percentage))
+        ttk.Label(popup,text=progress_bar_display).pack()
+        
+
+    def Popup(self,message:str):
+        popup = ttk.Toplevel(self.root)
+        popup.geometry("250x60")
+        popup.title(message)
+        ttk.Label(popup,text=message).pack()
+        ttk.Button(popup,text="Ok",command=popup.destroy,width=10).pack()
 
 
-
-
-
-
+ 
+#===========CUT GUI================
     def cutGUI(self):
+
+        
+
         print("Cut from Clip")
 
         
@@ -128,6 +140,6 @@ class GUI():
 
 
 if __name__ == "__main__":
-    
+
     gui = GUI()
     
