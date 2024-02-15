@@ -101,7 +101,7 @@ class GUI():
         if res == "480p":
             vm.changeRes(merged_clips,(854,480))
         
-        vm.exportClip(merged_clips,self.export_path,self.log)
+        vm.exportClip(merged_clips,self.export_path)
         
         self.Popup("Finished merging clips")
         return
@@ -128,8 +128,6 @@ class GUI():
  
 #===========CUT GUI================
     def cutGUI(self):
-
-        
 
         print("Cut from Clip")
 
