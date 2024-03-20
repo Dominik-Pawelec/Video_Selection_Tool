@@ -70,13 +70,15 @@ if __name__ == "__main__":
     print("Finished testing Video_Manipulations.py")
     """
 
-   # video = mp.VideoFileClip("temp/selekcja.mp4")
+    video = mergeClips(["Test_Folder/a.mp4","Test_Folder/b.mp4"])
+    
+    exportClip(video,"Test_Folder/test_h.mp4")
 
     #changeRes(video,(640,480))
 
     #exportClip(video,"temp/","selekcja_lowRes.mp4")
 
-    x = mergeClips(["C:/Users/domin/Desktop/aaaprojekt/Video_Selection_Tool/Test_Folder/h.mp4","C:/Users/domin/Desktop/aaaprojekt/Video_Selection_Tool/Test_Folder/test_video2.mp4"])
-    exportClip(x,"C:/Users/domin/Desktop/aaaprojekt/Video_Selection_Tool/Test_Folder/22h.mp4")
+    #x = mergeClips(["C:/Users/domin/Desktop/aaaprojekt/Video_Selection_Tool/Test_Folder/h.mp4","C:/Users/domin/Desktop/aaaprojekt/Video_Selection_Tool/Test_Folder/test_video2.mp4"])
+    #exportClip(x,"C:/Users/domin/Desktop/aaaprojekt/Video_Selection_Tool/Test_Folder/22h.mp4")
 
     
