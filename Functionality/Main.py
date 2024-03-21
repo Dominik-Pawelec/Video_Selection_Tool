@@ -79,7 +79,7 @@ class GUI():
         save_file = filedialog.asksaveasfilename(filetypes=[("mp4",".mp4")])
         if save_file==None or save_file=="":
             return
-        self.export_path = save_file
+        self.export_path = save_file + ".mp4"
         self.export_display.set(self.export_path)
         print(self.export_path)
 
