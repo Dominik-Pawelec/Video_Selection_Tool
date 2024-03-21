@@ -100,6 +100,7 @@ class GUI():
         res = self.resolution_display.get()
         if res == "480p":
             vm.changeRes(merged_clips,(854,480))
+            print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
         
         vm.exportClip(merged_clips,self.export_path)
         

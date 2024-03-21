@@ -6,8 +6,16 @@ import os
 
 def mergeClips(clip_list):
     videos = [mp.VideoFileClip(file) for file in clip_list if os.path.splitext(file)[1]==".mp4"]
+    blank = mp.ColorClip(videos[0].size,color = (0,0,0), duration=0.4)
+    new_videos_list =[]
+    
+    for film in videos:
+        new_videos_list.append(film)
+        new_videos_list.append(blank)
+    
+    
     if len(videos) != 0:
-        return mp.concatenate(videos)
+        return mp.concatenate(new_videos_list)
     return None
 
 def exportClip(clip:mp.VideoFileClip, path):
